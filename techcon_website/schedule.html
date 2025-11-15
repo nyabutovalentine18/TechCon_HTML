@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule for TechCon 2024</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        /* Navigation Styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(26, 42, 108, 0.9)), 
+                        url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 4rem 0;
+        }
+        
+        .schedule-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .schedule-intro h2 {
+            font-size: 2.2rem;
+            color: #1a2a6c;
+            margin-bottom: 1rem;
+        }
+        
+        .schedule-intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Table Styles */
+        .schedule-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        caption {
+            caption-side: top;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a2a6c;
+            padding: 1.5rem;
+            background: #f0f4ff;
+        }
+        
+        thead {
+            background: #1a2a6c;
+            color: white;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .time-column {
+            font-weight: 600;
+            color: #1a2a6c;
+            width: 15%;
+        }
+        
+        .session-column {
+            width: 50%;
+        }
+        
+        .speaker-column {
+            width: 35%;
+        }
+        
+        .session-title {
+            font-weight: 600;
+            color: #1a2a6c;
+            margin-bottom: 0.5rem;
+        }
+        
+        .session-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .speaker-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .speaker-title {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .track-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .track-ai {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+        
+        .track-web {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .track-security {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        
+        .track-innovation {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .day-separator {
+            background: #f0f4ff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1a2a6c;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a2a6c;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .time-column, .session-column, .speaker-column {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>Schedule for TechCon 2024</h1>
+                <p>Plan Your Conference Experience</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="schedule.html" class="active">Schedule</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Conference Schedule</h1>
+            <p>Explore the complete timetable of events, sessions, and speakers for TechCon 2024</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="schedule-intro">
+            <h2>TechCon 2024 Schedule</h2>
+            <p>Below you'll find the complete schedule for TechCon 2024. All times are in Eastern Daylight Time (EDT). Sessions are color-coded by track to help you plan your conference experience.</p>
+        </div>
+
+        <div class="schedule-container">
+            <table>
+                <caption>Detailed Schedule of Events for TechCon 2024</caption>
+                <thead>
+                    <tr>
+                        <th scope="col" class="time-column">Time</th>
+                        <th scope="col" class="session-column">Session</th>
+                        <th scope="col" class="speaker-column">Speaker</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Day 1 -->
+                    <tr class="day-separator">
+                        <td colspan="3">Day 1: October 15, 2024 - Emerging Technologies</td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">8:00 AM - 9:00 AM</td>
+                        <td>
+                            <div class="session-title">Registration & Welcome Breakfast</div>
+                            <div class="session-description">Check-in, network with fellow attendees, and enjoy breakfast</div>
+                        </td>
+                        <td>Conference Team</td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">9:00 AM - 10:00 AM</td>
+                        <td>
+                            <div class="session-title">Opening Keynote: The Next Decade of Innovation</div>
+                            <div class="session-description">Exploring the technological trends that will shape our future</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Dr. Elena Rodriguez</div>
+                            <div class="speaker-title">AI Research Pioneer, NeuroTech Labs</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">10:15 AM - 11:15 AM</td>
+                        <td>
+                            <div class="session-title">AI Ethics in Practice <span class="track-indicator track-ai">AI Track</span></div>
+                            <div class="session-description">Implementing ethical frameworks in real-world AI applications</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Dr. Maya Patel</div>
+                            <div class="speaker-title">Director, Ethical AI Institute</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">11:30 AM - 12:30 PM</td>
+                        <td>
+                            <div class="session-title">Web 3.0: Beyond the Hype <span class="track-indicator track-web">Web Track</span></div>
+                            <div class="session-description">Practical applications of decentralized technologies</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Isabella Rossi</div>
+                            <div class="speaker-title">Founder, ChainForward Labs</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">12:30 PM - 1:30 PM</td>
+                        <td>
+                            <div class="session-title">Networking Lunch</div>
+                            <div class="session-description">Connect with speakers and fellow attendees</div>
+                        </td>
+                        <td>All Attendees</td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">1:45 PM - 2:45 PM</td>
+                        <td>
+                            <div class="session-title">Quantum Computing Demystified <span class="track-indicator track-innovation">Innovation Track</span></div>
+                            <div class="session-description">Understanding quantum principles and their practical implications</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Dr. Kenji Tanaka</div>
+                            <div class="speaker-title">Lead Researcher, Quantum Dynamics</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">3:00 PM - 4:00 PM</td>
+                        <td>
+                            <div class="session-title">Cybersecurity in the AI Era <span class="track-indicator track-security">Security Track</span></div>
+                            <div class="session-description">Addressing new security challenges posed by AI technologies</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Marcus Johnson</div>
+                            <div class="speaker-title">Chief Scientist, QuantumLeap Inc.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">4:15 PM - 5:15 PM</td>
+                        <td>
+                            <div class="session-title">Panel: The Future of Work</div>
+                            <div class="session-description">Industry leaders discuss how technology is transforming workplaces</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Multiple Speakers</div>
+                            <div class="speaker-title">Moderated by Sarah Chen</div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Day 2 -->
+                    <tr class="day-separator">
+                        <td colspan="3">Day 2: October 16, 2024 - Sustainable Innovation</td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">8:30 AM - 9:30 AM</td>
+                        <td>
+                            <div class="session-title">Morning Keynote: Tech for Good</div>
+                            <div class="session-description">Leveraging technology to address global challenges</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Dr. Sofia Chen</div>
+                            <div class="speaker-title">Director, ClimateTech Solutions</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">9:45 AM - 10:45 AM</td>
+                        <td>
+                            <div class="session-title">Green AI: Sustainable Machine Learning <span class="track-indicator track-ai">AI Track</span></div>
+                            <div class="session-description">Reducing the environmental impact of AI systems</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Dr. Li Wei</div>
+                            <div class="speaker-title">Director, GreenTech Institute</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">11:00 AM - 12:00 PM</td>
+                        <td>
+                            <div class="session-title">Building Accessible Web Applications <span class="track-indicator track-web">Web Track</span></div>
+                            <div class="session-description">Implementing WCAG guidelines in modern web development</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">James Wilson</div>
+                            <div class="speaker-title">CTO, OpenFuture Foundation</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">12:00 PM - 1:00 PM</td>
+                        <td>
+                            <div class="session-title">Lunch & Learn: Open Source Sustainability</div>
+                            <div class="session-description">How to maintain and grow sustainable open source projects</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Marcus Johnson</div>
+                            <div class="speaker-title">CTO, OpenFuture Foundation</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">1:15 PM - 2:15 PM</td>
+                        <td>
+                            <div class="session-title">Neurotechnology Breakthroughs <span class="track-indicator track-innovation">Innovation Track</span></div>
+                            <div class="session-description">Latest developments in brain-computer interfaces</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Dr. Chloe Williams</div>
+                            <div class="speaker-title">CEO, NeuroLink Systems</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">2:30 PM - 3:30 PM</td>
+                        <td>
+                            <div class="session-title">Privacy by Design <span class="track-indicator track-security">Security Track</span></div>
+                            <div class="session-description">Building privacy into products from the ground up</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Dr. Aisha Patel</div>
+                            <div class="speaker-title">CEO, BioSynth Technologies</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">3:45 PM - 4:45 PM</td>
+                        <td>
+                            <div class="session-title">Workshop: Sustainable Coding Practices</div>
+                            <div class="session-description">Hands-on session on writing energy-efficient code</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Multiple Instructors</div>
+                            <div class="speaker-title">Led by TechCon Engineering Team</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-column">5:00 PM - 6:00 PM</td>
+                        <td>
+                            <div class="session-title">Closing Ceremony & Awards</div>
+                            <div class="session-description">Celebrating innovation and recognizing outstanding contributions</div>
+                        </td>
+                        <td>
+                            <div class="speaker-name">Conference Organizers</div>
+                            <div class="speaker-title">TechCon 2024 Team</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCon Conference. All rights reserved.</p>
+            <p>Shaping the future of technology together</p>
+        </div>
+    </footer>
+</body>
+</html>
